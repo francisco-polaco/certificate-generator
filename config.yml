@@ -1,0 +1,7 @@
+sources:
+  data:
+    path: "example/data.xlsx"
+    sheet: "Sheet1"
+  template: "example/template.pptx"
+
+output_dir: "example/output"
