@@ -15,7 +15,7 @@ def generate_pptx(replace_dict, template_path, output_path):
     prs = Presentation(template_path)
 
     for column, value in replace_dict.items():
-        replace_text_in_pptx(prs, f"{{{column}}}", value)
+        replace_text_in_pptx(prs, f"#{column}", value)
 
     prs.save(output_path)
 
