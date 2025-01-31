@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate executable
-        run: pyinstaller --onefile --name=certificate-generator main.py
+        run: pyinstaller --onefile --icon=assets/icon.ico --name=certificate-generator main.py
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -55,7 +55,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate executable
-        run: pyinstaller --onefile --name=certificate-generator main.py
+        run: pyinstaller --onefile --icon=assets/icon.ico --name=certificate-generator main.py
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
