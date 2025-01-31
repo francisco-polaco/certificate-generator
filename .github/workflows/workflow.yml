@@ -68,17 +68,10 @@ jobs:
       - name: Generate executable
         run: pyinstaller --onefile --name=certificate-generator main.py
 
-#      - name: Upload Executable as Artifact
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: certificate-generator.exe
-#          path: dist/certificate-generator.exe
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: dist/certificate-generator.exe
-          draft: true
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -107,20 +100,12 @@ jobs:
       - name: Generate executable
         run: pyinstaller --onefile --name=certificate-generator main.py
 
-#      - name: Upload Executable as Artifact
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: certificate-generator.exe
-#          path: dist/certificate-generator.exe
-
-      - run: ls dist/
-      - run: ls
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/certificate-generator
-          draft: true
+          files: |
+            dist/certificate-generator
+            config.yml
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
