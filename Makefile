@@ -16,4 +16,4 @@ build:
 	pyinstaller --onefile --name=certificate-generator main.py
 
 clean:
-	rm -rf build/ dist/
+	rm -rf build/ dist/ certificate-generator.spec
