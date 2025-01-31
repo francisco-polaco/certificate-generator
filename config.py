@@ -45,9 +45,18 @@ class SourcesConfig(BaseModel):
         extra = "forbid"
 
 
+class OutputConfig(BaseModel):
+    path: PathLike
+    columns_to_filename: list[str]
+
+    class Config:
+        frozen = True
+        extra = "forbid"
+
+
 class Settings(BaseSettings):
     sources: SourcesConfig
-    output_dir: PathLike
+    output: OutputConfig
 
     @classmethod
     def settings_customise_sources(cls,

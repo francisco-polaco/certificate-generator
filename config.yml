@@ -4,4 +4,8 @@ sources:
     sheet: "Sheet1"
   template: "example/template.pptx"
 
-output_dir: "example/output"
+output:
+  path: "example/output"
+  columns_to_filename:
+    - ID
+    - Name

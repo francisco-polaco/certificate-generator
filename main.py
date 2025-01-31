@@ -2,7 +2,6 @@ import os
 import platform
 
 import pandas as pd
-from more_itertools import first
 from pptx import Presentation
 
 from config import get_config
@@ -32,7 +31,7 @@ def main():
     # File paths
     excel_file = config.sources.data.path  # Input Excel file
     pptx_template = config.sources.template  # PowerPoint template
-    output_folder = config.output_dir  # Folder to store results
+    output_folder = config.output.path  # directory to store results
 
     # Ensure output folder exists
     os.makedirs(output_folder, exist_ok=True)
@@ -45,8 +44,7 @@ def main():
     for index, row in df.iterrows():
         replace_dict = {f"{column}": row[column] for column in df.columns.tolist()}
 
-        # the suffix is the first data column
-        suffix_filename = first(replace_dict.values())
+        suffix_filename = "_".join(str(row[column]) for column in config.output.columns_to_filename)
         output_pptx_filename = os.path.join(output_folder, f"{suffix_filename}.pptx")
 
         # PPTX
@@ -59,6 +57,7 @@ def main():
         pptx_to_pdf(output_pptx_filename, output_folder, output_pdf_filename)
 
     print("✅ Process completed!")
+
 
 if __name__ == "__main__":
     main()
