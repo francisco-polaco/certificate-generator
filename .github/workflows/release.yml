@@ -1,7 +1,9 @@
 name: Release workflow
 
 on:
-  tags:
+  push:
+    tags:
+      - "*"
 
 # avoid having multiple CIs running
 concurrency:
