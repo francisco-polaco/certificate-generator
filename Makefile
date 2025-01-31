@@ -13,7 +13,7 @@ lint:
 	flake8 .
 
 build:
-	pyinstaller --onefile --name=certificate-generator main.py
+	pyinstaller --onefile --icon=assets/icon.ico --name=certificate-generator main.py
 
 clean:
 	rm -rf build/ dist/ certificate-generator.spec
