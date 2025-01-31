@@ -2,7 +2,6 @@ name: Release workflow
 
 on:
   tags:
-    - *
 
 # avoid having multiple CIs running
 concurrency:
