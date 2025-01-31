@@ -14,3 +14,6 @@ lint:
 
 build:
 	pyinstaller --onefile --name=certificate-generator main.py
+
+clean:
+	rm -rf build/ dist/
