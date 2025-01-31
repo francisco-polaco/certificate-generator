@@ -112,6 +112,9 @@ jobs:
 #          name: certificate-generator.exe
 #          path: dist/certificate-generator.exe
 
+      - run: ls dist/
+      - run: ls
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
