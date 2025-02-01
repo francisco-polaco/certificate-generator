@@ -1,5 +1,6 @@
 import os
 import platform
+from datetime import datetime, date
 
 import pandas as pd
 from pptx import Presentation
@@ -15,7 +16,13 @@ def generate_pptx(replace_dict, template_path, output_path):
     prs = Presentation(template_path)
 
     for column, value in replace_dict.items():
-        replace_text_in_pptx(prs, f"#{column}", value)
+        # force value to be string, and give date a formatting.
+        if isinstance(value, datetime) or isinstance(value, date):
+            value_as_str = value.strftime("%Y-%m-%d")
+        else:
+            value_as_str = str(value)
+
+        replace_text_in_pptx(prs, f"#{column}", value_as_str)
 
     prs.save(output_path)
 
