@@ -45,6 +45,14 @@ class SourcesConfig(BaseModel):
         extra = "forbid"
 
 
+class FormatConfig(BaseModel):
+    date: str = "%d/%m/%Y"
+
+    class Config:
+        frozen = True
+        extra = "forbid"
+
+
 class OutputConfig(BaseModel):
     path: PathLike
     columns_to_filename: list[str]
@@ -56,6 +64,7 @@ class OutputConfig(BaseModel):
 
 class Settings(BaseSettings):
     sources: SourcesConfig
+    format: FormatConfig = FormatConfig()
     output: OutputConfig
 
     @classmethod
